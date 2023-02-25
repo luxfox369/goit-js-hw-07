@@ -20,29 +20,31 @@ let markUp = galleryItems
 const galleryRef = document.querySelector(".gallery");
 galleryRef.innerHTML = markUp;
 galleryRef.addEventListener("click", onShowOriginal);
+
 let instance = {};
 function onShowOriginal(event) {
     event.preventDefault();
     if (!event.target.classList.contains("gallery__image")){
          return; 
     }
-    instance = basicLightbox.create(`
-    <img src=${event.target.dataset.source} width="800" height="600">`);
+    instance = basicLightbox.create(`<img src=${event.target.dataset.source} width="800" height="600">`,
+        {
+            onShow: (instance) => { 
+              galleryRef.addEventListener("keydown", onCloseOriginal,{ once: true }); //, 
+            },
+            onClose: (instance) => { 
+             galleryRef.removeEventListener("keydown", onCloseOriginal);
+            }
+        });
     instance.show();
-     console.log("після створення ",instance.visible());
-    console.log("після створення ", instance.element());
-    galleryRef.addEventListener("keydown", onCloseOriginal);
+    console.log("після створення ",instance.visible());
+   // console.log("після створення ", instance.element());
 };
-// if (instance.visible()) {
-    
-// }     
-
+ 
 function onCloseOriginal (event)  {
   //   console.log(event.code);
         if (event.code === "Escape") {
             instance.close();
-            galleryRef.removeEventListener("keydown", onCloseOriginal);
         }
     console.log("після escape ", instance.visible());//чому далі true ???????
-    console.log("після escape ", instance.element());//далі true 
- };
+  };
