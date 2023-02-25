@@ -31,11 +31,15 @@ function showOriginal(event) {
     instance = basicLightbox.create(`
     <img src=${event.target.dataset.source} width="800" height="600">`);
     instance.show();
-       
+     console.log("після створення ",instance.visible());
+     console.log("після створення ",instance.element());  
 };
+
 galleryRef.addEventListener("keydown", (event) => {
-    //console.log(event.code);
+    console.log(event.code);
     if (event.code === "Escape") {
         instance.close();
     }
+    console.log("після escape ",instance.visible());//чому далі true ???????
+    console.log("після escape ",instance.element());//далі true 
 });
