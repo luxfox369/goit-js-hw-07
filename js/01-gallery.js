@@ -45,6 +45,7 @@ function onCloseOriginal (event)  {
   //   console.log(event.code);
         if (event.code === "Escape") {
             instance.close();
+            console.log("після escape ", instance.visible());//чому далі true ???????
         }
-    console.log("після escape ", instance.visible());//чому далі true ???????
+    
   };
