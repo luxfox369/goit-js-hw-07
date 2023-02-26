@@ -15,13 +15,13 @@ let markUp = galleryItems
     .join("");
 const galleryRef = document.querySelector(".gallery");
 galleryRef.innerHTML = markUp;
+let gallery = new SimpleLightbox('.gallery a', { showCounter:false,captionsData:'alt' , captionDelay: 250 ,});
+// galleryRef.addEventListener("click", onContainerClick);
 
-galleryRef.addEventListener("click", onContainerClick);
-
-function onContainerClick(event) {
-      event.preventDefault();
-    let gallery = new SimpleLightbox('.gallery a', { showCounter:false,captionsData:'alt' , captionDelay: 250 ,});
-    gallery.on('show.simplelightbox', function () {
+// function onContainerClick(event) {
+//       event.preventDefault();
+//     let gallery = new SimpleLightbox('.gallery a', { showCounter:false,captionsData:'alt' , captionDelay: 250 ,});
+//     gallery.on('show.simplelightbox', function () {
       
-  });
-};
+//   });
+// };
