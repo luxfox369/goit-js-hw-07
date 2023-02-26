@@ -29,11 +29,12 @@ function onShowOriginal(event) {
     }
     instance = basicLightbox.create(`<img src=${event.target.dataset.source} width="800" height="600">`,
         {
-            onShow: (instance) => { 
+            onShow: () => { 
               galleryRef.addEventListener("keydown", onCloseOriginal,{ once: true }); //, 
             },
-            onClose: (instance) => { 
-             galleryRef.removeEventListener("keydown", onCloseOriginal);
+            onClose: () => { 
+                galleryRef.removeEventListener("keydown", onCloseOriginal);
+               // console.log("після escape ", instance.visible());//чому далі true ???????
             }
         });
     instance.show();

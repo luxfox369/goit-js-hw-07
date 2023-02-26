@@ -13,20 +13,15 @@ let markUp = galleryItems
         />
      </a>` )
     .join("");
- //console.log("markUp ",markUp);
 const galleryRef = document.querySelector(".gallery");
 galleryRef.innerHTML = markUp;
 
-galleryRef.addEventListener("click", onClick);
+galleryRef.addEventListener("click", onContainerClick);
 
-function onClick(event) {
-  consol.log(event.target);
-  let gallery = new SimpleLightbox('.gallery a', { captionsData: event.target.alt , captionDelay: 250 });
-  gallery.on('show.simplelightbox', function () {
-    //if (event.target.nodName === "A")
+function onContainerClick(event) {
       event.preventDefault();
-    //    if (!event.target.classList.contains("gallery__image")) {
-    //      return;
-    // }
+    let gallery = new SimpleLightbox('.gallery a', { showCounter:false,captionsData:'alt' , captionDelay: 250 ,});
+    gallery.on('show.simplelightbox', function () {
+      
   });
 };
